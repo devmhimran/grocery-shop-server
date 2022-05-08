@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = 5000
+const port = process.env.PORT || 5000;
 const cors = require('cors');
 require('dotenv').config();
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
@@ -49,7 +49,6 @@ async function run(){
     app.get('/myitem', async(req, res) =>{
       const userId = req.query.userId;
       const query = {userId : userId};
-      console.log(query);
       const result = productCollection.find(query);
       const resultArray = await result.toArray();
       res.send(resultArray);
