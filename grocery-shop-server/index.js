@@ -45,6 +45,15 @@ async function run(){
       const result = await productCollection.deleteOne(query);
       res.send(result);
     })
+
+    app.get('/myitem', async(req, res) =>{
+      const userId = req.query.userId;
+      const query = {userId : userId};
+      console.log(query);
+      const result = productCollection.find(query);
+      const resultArray = await result.toArray();
+      res.send(resultArray);
+    })
     
 
   }finally{}
