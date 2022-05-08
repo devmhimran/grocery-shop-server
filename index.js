@@ -76,7 +76,7 @@ run().catch(console.dir);
 app.get('/', (req, res) => {
   res.send('Working Successfully');
 })
-app.get('/heroku', (req, res) => {
+app.get('/herokuTest', (req, res) => {
   res.send('Working Successfully Heroku');
 })
 
