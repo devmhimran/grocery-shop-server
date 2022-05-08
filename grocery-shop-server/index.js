@@ -64,6 +64,7 @@ async function run(){
         $set:{
           quantity: newQuantity.quantity,
         }
+        
       };
       const updatedResult = await productCollection.updateOne(filter, updatedDoc, options);
       res.send(updatedResult);
