@@ -17,7 +17,7 @@ async function run(){
     await client.connect();
     const productCollection = client.db("grocery_shop").collection("products");
 
-    app.get('/products', async(req, res)=>{
+    app.get('/inventory', async(req, res)=>{
       
       const query = {};
       const cursor = productCollection.find(query);
@@ -26,7 +26,7 @@ async function run(){
    
     });
 
-    app.post('/products', (req, res)=>{
+    app.post('/inventory', (req, res)=>{
       const addProduct =  req.body;
       const result = productCollection.insertOne(addProduct);
       res.send(result);
@@ -38,6 +38,8 @@ async function run(){
       const singleProduct = await productCollection.findOne(query);
       res.send(singleProduct);
     })
+
+    app.delete('/inventory/')
   
   }finally{}
 }
